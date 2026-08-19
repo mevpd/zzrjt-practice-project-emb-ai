@@ -23,13 +23,10 @@ def sentiment_analyzer(text_to_analyze):
     else:
         label = score = None
 
-    if label is None:
-        return "Invalid Input! Try again."
-    else:
-        return {
-            "label": label,
-            "score": score
-        }
+    return {
+        "label": label,
+        "score": score
+    }
 
 
 if __name__ == __name__:
