@@ -17,16 +17,14 @@ def sent_analyzer():
         function. The output returned shows the label and its confidence
         score for the provided text.
     '''
-    # TODO
     text_to_analyze = request.args.get("textToAnalyze")
     response = sentiment_analyzer(text_to_analyze)
     label = response["label"]
     score = response["score"]
     if label is None:
         return "Invalid Input! Try again."
-    else:
-        return "The given text has been identified as {} with a score of {}."\
-            .format(label.split('_')[1], score)
+    return f"The given text has been identified as {label.split('_')[1]}"\
+        f" with a score of {score}."
 
 
 @app.route("/")
@@ -38,6 +36,4 @@ def render_index_page():
 
 
 if __name__ == "__main__":
-    ''' This functions executes the flask app and deploys it on localhost:5000
-    '''
     app.run(host="0.0.0.0", port=5000)
