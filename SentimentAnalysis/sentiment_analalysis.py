@@ -15,7 +15,14 @@ def sentiment_analyzer(text_to_analyze):
 
     response = requests.post(url, json=myobj, headers=header)
     formatted_response = json.loads(response.text)
-    return formatted_response
+
+    label = formatted_response["documentSentiment"]["label"]
+    score = formatted_response["documentSentiment"]["score"]
+
+    return {
+        "label": label,
+        "score": score
+    }
 
 
 if __name__ == __name__:
