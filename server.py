@@ -2,20 +2,19 @@
     analysis to be executed over the Flask channel and deployed on
     localhost:5000.
 '''
-# Import Flask, render_template, request from the flask pramework package : TODO
+# Import Flask, render_template, request from the flask pramework package :
 # Import the sentiment_analyzer function from the package created: TODO
 
 from flask import Flask, render_template, request
 from SentimentAnalysis.sentiment_analalysis import sentiment_analyzer
-#Initiate the flask app : TODO
 app = Flask("Sentiment Analyzer")
 
 
 @app.route("/sentimentAnalyzer")
 def sent_analyzer():
-    ''' This code receives the text from the HTML interface and 
+    ''' This code receives the text from the HTML interface and
         runs sentiment analysis over it using sentiment_analysis()
-        function. The output returned shows the label and its confidence 
+        function. The output returned shows the label and its confidence
         score for the provided text.
     '''
     # TODO
@@ -26,7 +25,8 @@ def sent_analyzer():
     if label is None:
         return "Invalid Input! Try again."
     else:
-        return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
+        return "The given text has been identified as {} with a score of {}."\
+            .format(label.split('_')[1], score)
 
 
 @app.route("/")
@@ -34,7 +34,7 @@ def render_index_page():
     ''' This function initiates the rendering of the main application
         page over the Flask channel
     '''
-    return render_template("index.html");
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
