@@ -16,13 +16,20 @@ def sentiment_analyzer(text_to_analyze):
     response = requests.post(url, json=myobj, headers=header)
     formatted_response = json.loads(response.text)
 
-    label = formatted_response["documentSentiment"]["label"]
-    score = formatted_response["documentSentiment"]["score"]
+    if response.status_code == 200:
+        label = formatted_response["documentSentiment"]["label"]
+        score = formatted_response["documentSentiment"]["score"]
 
-    return {
-        "label": label,
-        "score": score
-    }
+    else:
+        label = score = None
+
+    if label is None:
+        return "Invalid Input! Try again."
+    else:
+        return {
+            "label": label,
+            "score": score
+        }
 
 
 if __name__ == __name__:
